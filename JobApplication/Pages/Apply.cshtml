@@ -1,0 +1,289 @@
+﻿@page
+@model JobApplication.Pages.ApplyModel
+@{
+    ViewData["Title"] = "Bewerbung";
+}
+
+<div class="row">
+    @if (Model.Step == 1) {
+        <div class="col-lg-9 m-xl-auto p-3">
+            <h1 class="text-center mb-5">Bewerbung - Bewerberdaten</h1>
+
+            <form asp-page-handler="applicant" method="post">
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Titel</label>
+                    <div class="col-sm-8">
+                        <input asp-for="Applicant.TitleCode" class="form-control" />
+                        <span asp-validation-for="Applicant.TitleCode" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Vorname</label>
+                    <div class="col-sm-8">
+                        <input asp-for="Applicant.FirstName" class="form-control" />
+                        <span asp-validation-for="Applicant.FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Familienname</label>
+                    <div class="col-sm-8">
+                        <input asp-for="Applicant.LastName" class="form-control" />
+                        <span asp-validation-for="Applicant.LastName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Geschlecht</label>
+                    <div class="col-sm-8">
+                        <select asp-for="Applicant.Gender" asp-items="Model.GenderTypes" class="form-control"></select>
+                        <span asp-validation-for="Applicant.Gender" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Nationalität</label>
+                    <div class="col-sm-8">
+                        <input asp-for="Applicant.Nationality" class="form-control" />
+                        <span asp-validation-for="Applicant.Nationality" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Telefonnummer</label>
+                    <div class="col-sm-8">
+                        <input asp-for="Applicant.TelephoneNumber" class="form-control" />
+                        <span asp-validation-for="Applicant.TelephoneNumber" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">E-Mailadresse</label>
+                    <div class="col-sm-8">
+                        <input asp-for="Applicant.Email" class="form-control" />
+                        <span asp-validation-for="Applicant.Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Geburtsdatum</label>
+                    <div class="col-sm-8">
+                        <input asp-for="Applicant.BirthDate" class="form-control" />
+                        <span asp-validation-for="Applicant.BirthDate" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Land</label>
+                    <div class="col-sm-8">
+                        <input asp-for="Applicant.CountryCode" class="form-control" />
+                        <span asp-validation-for="Applicant.CountryCode" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">PLZ</label>
+                    <div class="col-sm-8">
+                        <input asp-for="Applicant.Zip" class="form-control" />
+                        <span asp-validation-for="Applicant.Zip" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Stadt</label>
+                    <div class="col-sm-8">
+                        <input asp-for="Applicant.City" class="form-control" />
+                        <span asp-validation-for="Applicant.City" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Straße</label>
+                    <div class="col-sm-8">
+                        <input asp-for="Applicant.Street" class="form-control" />
+                        <span asp-validation-for="Applicant.Street" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Arbeitserlaubnis?</label>
+                    <div class="col-sm-8">
+                        <input asp-for="Applicant.WorkPermit" />
+                        <span asp-validation-for="Applicant.WorkPermit" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Führerscheinklassen</label>
+                    <div class="col-sm-8">
+                        <input asp-for="Applicant.DriversLicenseClasses" class="form-control" />
+                        <span asp-validation-for="Applicant.DriversLicenseClasses" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Zuvor angestellt?</label>
+                    <div class="col-sm-8">
+                        <input asp-for="Applicant.EmployedBefore" />
+                        <span asp-validation-for="Applicant.EmployedBefore" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Wehrdienst abgeschlossen?</label>
+                    <div class="col-sm-8">
+                        <input asp-for="Applicant.MilitaryServiceFinished" />
+                        <span asp-validation-for="Applicant.MilitaryServiceFinished" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="offset-sm-4 col-sm-8">
+                        <input type="submit" value="Speichern" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        @if (Model.ValidationMessages != null)
+        {
+            <div>
+                @Model.ValidationMessages.Message
+                @if (Model.ValidationMessages.ModelState.Count > 0) {
+                    <ul>
+                        @foreach (var modelState in Model.ValidationMessages.ModelState) {
+                            <li>
+                                @modelState.Key:
+                                <ul>
+                                @foreach (var validationMessage in modelState.Value) {
+                                    <li>@validationMessage</li>
+                                }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+        }
+    }
+    else if (Model.Step == 2)
+    {
+        <h1 class="display-4 text-center">Bewerbung - Dokumente</h1>
+
+        <table class="table
+">
+            <thead>
+                <tr>
+                    <th>Dokumententyp</th>
+                    <th>Dateiname</th>
+                    <th>Aktion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var document in Model.Documents) {
+                    <tr>
+                        <td>@document.DocumentType</td>
+                        <td>@document.DocumentName</td>
+                        <td>
+                            <form asp-page-handler="deleteDocument" asp-route-documentId="@document.DocumentId" method="post">
+                                <input type="submit" value="Löschen" class="btn btn-danger" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <form asp-page-handler="upload" method="post" enctype="multipart/form-data">
+            <select asp-for="SelectedDocumentType" asp-items="Model.DocumentTypes"></select>
+            <input type="file" asp-for="Upload" />
+            <input type="submit" value="Hochladen" class="btn btn-secondary" />
+        </form>
+
+        <div class="text-end">
+            <form asp-page-handler="finishDocuments" method="post">
+                <input type="submit" value="Weiter" class="btn btn-primary" />
+            </form>
+        </div>
+
+        @if (Model.ValidationMessages != null)
+        {
+            <div>
+                @Model.ValidationMessages.Message
+            </div>
+        }
+    }
+    else if (Model.Step == 3)
+    {
+        <div class="col-lg-9 m-xl-auto p-3">
+            <h1 class="text-center mb-5">Bewerbung - Bewerbung abschließen</h1>
+
+            <form asp-page-handler="finishApplication" method="post">
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Wunschgehalt</label>
+                    <div class="col-sm-8">
+                        <input asp-for="JobApplicationDetails.DesiredSalary" class="form-control" />
+                        <span asp-validation-for="JobApplicationDetails.DesiredSalary" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Empfohlen von</label>
+                    <div class="col-sm-8">
+                        <input asp-for="JobApplicationDetails.RecommendedBy" class="form-control" />
+                        <span asp-validation-for="JobApplicationDetails.RecommendedBy" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Verfügbar ab</label>
+                    <div class="col-sm-8">
+                        <input asp-for="JobApplicationDetails.AvailableFrom" class="form-control" />
+                        <span asp-validation-for="JobApplicationDetails.AvailableFrom" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Zustimmung zur Datenverarbeitung</label>
+                    <div class="col-sm-8">
+                        <input asp-for="JobApplicationDetails.AgreedToDataProcessing" />
+                        <span asp-validation-for="JobApplicationDetails.AgreedToDataProcessing" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Zustimmung zur Datenweitergabe</label>
+                    <div class="col-sm-8">
+                        <input asp-for="JobApplicationDetails.AgreedToDataRelaying" />
+                        <span asp-validation-for="JobApplicationDetails.AgreedToDataRelaying" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Quelle</label>
+                    <div class="col-sm-8">
+                        <input asp-for="JobApplicationDetails.ExternalSource" class="form-control" />
+                        <span asp-validation-for="JobApplicationDetails.ExternalSource" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="offset-sm-4 col-sm-8">
+                        <input type="submit" value="Speichern" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    } else if (Model.Step == 4) {
+        <h1 class="display-4 text-center">Bewerbung</h1>
+
+        <div class="text-center">
+            Bewerbung gesendet
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

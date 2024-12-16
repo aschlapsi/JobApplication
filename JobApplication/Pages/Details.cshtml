@@ -1,0 +1,82 @@
+﻿@page
+@model JobApplication.Pages.DetailsModel
+@{
+    ViewData["Title"] = "Jobdetails";
+}
+
+<div>
+    <h1 class="display-4 text-center">@Model.JobDescription.Name bei @Model.Job.DisplayAccountingCompany</h1>
+    <p>
+        @Model.JobDescription.Description
+    </p>
+    <p>
+        <h3>@Model.JobDescription.FunctionsTitle</h3>
+        <ul>
+        @foreach(var function in Model.JobDescription.Functions) {
+            <li>@function</li>
+        }
+        </ul>
+        <h3>@Model.JobDescription.SkillsTitle</h3>
+        <ul>
+            @foreach (var skill in Model.JobDescription.Skills)
+            {
+                <li>@skill</li>
+            }
+        </ul>
+        <h3>@Model.JobDescription.OffersTitle</h3>
+        <ul>
+            @foreach (var offer in Model.JobDescription.Offers)
+            {
+                <li>@offer</li>
+            }
+        </ul>
+    </p>
+    <p>
+        @Model.JobDescription.PaymentInfo
+    </p>
+    <p>
+        <ul>
+            @foreach (var jobLevel in Model.Job.JobLevels)
+            {
+                <li>@jobLevel</li>
+            }
+        </ul>
+    </p>
+    <p>
+        @Model.Job.AmountOfJobs Jobangebote in @Model.Job.CountryCode-@Model.Job.Zip @Model.Job.City,
+        Bezirk @Model.Job.DistrictName, Bundesland @Model.Job.ProvinceName
+    </p>
+    <p>Start: @Model.Job.StartDate</p>
+    <p>
+        Stunden: @Model.Job.Hours<br />
+        Min. Stunden: @Model.Job.MinHours
+    </p>
+    <p>
+        <ul>
+            @foreach(var jobGroup in Model.Job.JobGroups) {
+                <li>@jobGroup.Name</li>
+            }
+        </ul>
+    </p>
+    <div class="text-start row row-cols-1 row-cols-md-2 g-4">
+        @foreach (var store in Model.Job.Stores)
+        {
+            <div class="col">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <p class="card-text">
+                            Anzahl Jobs: @store.AmountOfJobs<br />
+                            @Model.Job.DisplayAccountingCompany<br />
+                            @store.Street<br />
+                            @Model.Job.Zip @Model.Job.City<br />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div>
+        <a asp-page="/Index" class="btn btn-secondary">Zurück</a>
+        <a asp-page="/Apply" asp-route-jobId="@Model.Job.JobId" asp-route-storeIds="@Model.JobStoreIds" class="btn btn-primary">Bewerben</a>
+    </div>
+</div>

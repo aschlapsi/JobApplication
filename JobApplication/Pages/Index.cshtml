@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Jobsuche";
+}
+
+<div>
+    <h1 class="display-4 text-center">Jobsuche</h1>
+
+    <div class="row text-center">
+        <form asp-page-handler="search" method="post">
+            <input type="text" name="searchTerm" />
+            <input type="submit" />
+        </form>
+    </div>
+
+    @if (Model.JobOfferSearchResponse != null) {
+        <div class="text-start row row-cols-1 row-cols-md-2 g-4">
+        @foreach (var job in Model.JobOfferSearchResponse.Jobs) {
+            <div class="col">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        @job.DisplayAccountingCompany
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@job.Title</h5>
+                        <p class="card-text">
+                            @job.AmountOfJobs Jobs in @job.Stores.Count() Stores in
+                            @job.Zip @job.City
+                        </p>
+                        <p class="card-text text-end">
+                            <a asp-page="/Details" asp-route-jobdescriptionid="@job.JobDescriptionId" asp-route-jobid="@job.JobId" class="btn btn-primary">Details</a>
+                        </p>
+                    </div>
+                 </div>
+             </div>
+        }
+        </div>
+    }
+</div>
